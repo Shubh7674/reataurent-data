@@ -1,21 +1,21 @@
-const express = require('express')
+import express from 'express';
 const app = express()
-var cors = require('cors')
-var bodyParser = require('body-parser')
+import cors from 'cors';
+import { urlencoded, json } from 'body-parser';
 
 
 
 app.use(cors());
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(urlencoded({ extended: false }))
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(json())
 
-const initializeDatabases = require('./dbs')
-const routes = require('./routes')
+import initializeDatabases from './dbs';
+import routes from './routes';
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = urlencoded({ extended: false })
 
 
 initializeDatabases().then(dbs => {
